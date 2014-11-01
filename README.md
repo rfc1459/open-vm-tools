@@ -23,7 +23,20 @@ Save the following file as `/etc/layman/overlays/open-vm-tools.xml`:
 </repositories>
 ```
 
+Unfortunately, the ebuilds in Portage have a higher version number due to the
+use of snapshot dates as ebuild versions, so you need to add the following to
+your package mask list:
+
+```
+# Prevent portage from pulling outdated open-vm-tools versions
+app-emulation/open-vm-tools::gentoo
+app-emulation/open-vm-tools-kmod::gentoo
+```
+
 Then use [layman][] to activate the repository.
+
+
+### Notes
 
 I urge you to hard-mask `*/*::open-vm-tools` and unmask single packages
 as-needed. I plan to keep only packages related to open-vm-tools here, but
