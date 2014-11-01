@@ -1,5 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: $
 
 EAPI=5
 
@@ -10,7 +11,7 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Opensourced tools for VMware guests"
 HOMEPAGE="http://open-vm-tools.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz http://www.level28.org/${PN}/${MY_P}-gentoo-patches.tar.xz"
 
 LICENSE="LGPL-2"
 SLOT="0"
@@ -58,7 +59,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	EPATCH_SOURCE="${FILESDIR}" EPATCH_SUFFIX="patch" \
+	EPATCH_SOURCE="${WORKDIR}/gentoo-patches" EPATCH_SUFFIX="patch" \
 		EPATCH_FORCE="yes" epatch
 	eautoreconf
 
@@ -67,6 +68,7 @@ src_prepare() {
 	# sed -i -e 's/CFLAGS=.*Werror/#&/g' configure || die "sed comment out Werror failed"
 	sed -i -e 's:\(TEST_PLUGIN_INSTALLDIR=\).*:\1\$libdir/open-vm-tools/plugins/tests:g' configure || die "sed test_plugin_installdir failed"
 
+	epatch_user
 }
 
 src_configure() {
