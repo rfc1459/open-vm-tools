@@ -2,6 +2,21 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/app-emulation/open-vm-tools-kmod/ChangeLog,v 1.44 2014/08/10 16:18:12 floppym Exp $
 
+*open-vm-tools-kmod-9.4.6.1770165-r1 (01 Nov 2014)
+
+  01 Nov 2014; Matteo Panella <morpheus@level28.org>
+  +open-vm-tools-kmod-9.4.6.1770165-r1.ebuild,
+  -files/0001-Remove-unused-DEPRECATED-macro.patch,
+  -files/0002-Conditionally-define-g_info-macro.patch,
+  -files/0003-Add-kuid_t-kgid_t-compatibility-layer.patch,
+  -files/0004-Use-new-link-helpers.patch,
+  -files/0005-Update-hgfs-file-operations-for-newer-kernels.patch,
+  -files/0006-Fix-vmxnet-module-on-kernels-3.16.patch,
+  -files/0007-Fix-vmhgfs-module-on-kernels-3.16.patch,
+  -files/0008-Fix-segfault-in-vmhgfs.patch,
+  -open-vm-tools-kmod-9.4.6.1770165.ebuild, files/60-vmware.rules:
+  Consolidate patches into a single tarball and fix udev rules under eudev
+
   10 Aug 2014; Mike Gilbert <floppym@gentoo.org>
   -open-vm-tools-kmod-2013.04.16.1098359.ebuild, metadata.xml,
   open-vm-tools-kmod-2013.09.16.1328054.ebuild:
