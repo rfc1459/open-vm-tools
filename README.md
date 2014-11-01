@@ -1,22 +1,35 @@
-fol4 overlay
-------------
-Contains mostly random multilib ebuilds.
+open-vm-tools overlay
+---------------------
 
-* Adobe AIR 2.6 with multilib support
-* qtserialport-5.3.1 with qt4 multilib support (this needs eclass files from Gentoo qt-overlay)
-* audacious{,-plugins}-9999 with gtk2 support and qt5 use flag
+This Portage overlay is a fork of the [fol4][] overlay containing only
+up-to-date ebuilds for open-vm-tools.
 
-<pre>cat &gt; /etc/layman/overlays/fol4.xml &lt;&lt; EOF
-&lt;repositories version="1.0"&gt;
-  &lt;repo quality="experimental" status="unofficial"&gt;
-    &lt;name&gt;fol4&lt;/name&gt;
-    &lt;description lang="en"&gt;Collection of custom ebuilds&lt;/description&gt;
-    &lt;homepage&gt;https://github.com/madsl/fol4&lt;/homepage&gt;
-    &lt;owner type="person"&gt;
-      &lt;email&gt;mads@ab3.no&lt;/email&gt;
-      &lt;name&gt;Mads&lt;/name&gt;
-    &lt;/owner&gt;
-    &lt;source type="git"&gt;git://github.com/madsl/fol4.git&lt;/source&gt;
-  &lt;/repo&gt;
-&lt;/repositories&gt;
-EOF</pre>
+### Installation
+
+Save the following file as `/etc/layman/overlays/open-vm-tools.xml`:
+
+```xml
+<repositories version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name>open-vm-tools</name>
+    <description lang="en">Unofficial ebuilds for open-vm-tools</description>
+    <homepage>https://github.com/rfc1459/open-vm-tools</homepage>
+    <owner type="person">
+      <email>morpheus@level28.org</email>
+      <name>Matteo Panella</name>
+    </owner>
+    <source type="git">git://github.com/rfc1459/open-vm-tools.git</source>
+  </repo>
+</repositories>
+```
+
+Then use [layman][] to activate the repository.
+
+I urge you to hard-mask `*/*::open-vm-tools` and unmask single packages
+as-needed. I plan to keep only packages related to open-vm-tools here, but
+hard-masking overlays is currently considered best practice (that is, unless
+you're the overlay owner).
+
+
+[fol4]: https://github.com/madsl/fol4
+[layman]: http://wiki.gentoo.org/wiki/Layman
